@@ -1,0 +1,8 @@
+<h1>{{ produto.titulo }}</h1>
+<button class="del" title="Excluir" ng-click="fnFechar()"></button>
+<img ng-if="produto.foto" ng-src="{{ produto.foto }}" alt="Imagem {{ produto.titulo }}">
+<ul>
+    <li><strong>Marca:</strong> {{ produto.marca }}</li>
+    <li><strong>Preço:</strong> {{ produto.preco }}</li>
+</ul>
+<p>{{ produto.obs }}</p>    

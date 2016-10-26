@@ -1,0 +1,62 @@
+<!<!DOCTYPE>
+<html ng-app="produtos">
+    <head>
+        <meta charset="UTF-8">
+        <title>Catálogo Option</title>
+        <link rel="stylesheet"  href="css/style.css">
+
+        <script src="scripts/angular.min.js"></script>
+        <script src="scripts/app.js"></script>
+        <script src="scripts/meus-produtos.js"></script>
+        <script src="scripts/produto.directive.js"></script>
+        <script src="scripts/produtos.controller.js"></script>
+    </head>
+    <body>
+        <div class="container" ng-controller="ProdutosController">
+            <h1>{{titulo}}</h1>
+         
+            <div class="lista-produtos">
+                <div aw-produto="p" fn-fechar="removerProduto(p.id)" ng-repeat="p in produtos">
+                    <h1>{{ p.titulo }}</h1>
+                        <button class="del" title="Excluir" ng-click="removerProduto(p.id)"></button>
+                        <img ng-if="p.foto" ng-src="{{ p.foto }}" alt="Imagem {{ p.titulo }}">
+                        <ul>
+                            <li><strong>Marca:</strong> {{ p.marca }}</li>
+                            <li><strong>Preço:</strong> {{ p.preco }}</li>
+                        </ul>
+                        <p>{{ p.obs }}</p>
+                </div>
+            </div>
+         
+            <hr>
+         
+            <form name="formulario" class="form-produtos" ng-submit="criarProduto()">
+                <h1>Adicionar Produto</h1>
+                <div class="form-campo">
+                    <label for="titulo">Título</label>
+                    <input type="text" name="titulo" id="titulo" ng-model="novoProduto.titulo">
+                </div>
+                <div class="form-campo medio">
+                    <label for="marca">Marca</label>
+                    <input type="text" name="marca" id="marca" ng-model="novoProduto.marca">
+                </div>
+                <div class="form-campo pequeno">
+                    <label for="preco">Preço</label>
+                    <input type="text" name="preco" id="preco" ng-model="novoProduto.preco">
+                </div>
+                <div class="form-campo">
+                    <label for="foto">Foto</label>
+                    <input type="text" name="foto" id="foto" ng-model="novoProduto.foto">
+                </div>
+                <div class="form-campo">
+                    <label for="obs">Observação</label>
+                    <textarea id="obs" name="obs" ng-model="novoProduto.obs" rows="5" ></textarea>
+                </div>
+                <footer>
+                    <button type="reset">Limpar</button>
+                    <button type="submit">Salvar</button>
+                </footer>
+            </form>
+        </div>
+    </body>
+</html>
